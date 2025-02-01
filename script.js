@@ -18,6 +18,7 @@ function alwaysYes() {
         default:
             alert("Okay, you said 'Yes'!"); // Informing user it defaults to yes
             populateHearts();  // Defaulting to "Yes" after the third "No"
+            document.getElementById('noBtn').style.display = 'none'; // Hides the No button
             break;
     }
 }
