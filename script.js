@@ -16,12 +16,14 @@ function alwaysYes() {
             alert('Last chance to say yes!');  // Third prompt
             break;
         default:
-            populateHearts();  // After the third "No", it still populates hearts
+            alert("Okay, you said 'Yes'!"); // Informing user it defaults to yes
+            populateHearts();  // Defaulting to "Yes" after the third "No"
             break;
     }
 }
 
 function populateHearts() {
+    document.getElementById('responses').innerHTML = ''; // Clear previous responses if any
     for (let i = 0; i < 100; i++) {
         let heart = document.createElement('div');
         heart.className = 'heart';
