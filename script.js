@@ -2,8 +2,23 @@ document.getElementById('yesBtn').addEventListener('click', function() {
     populateHearts();
 });
 
+let noClickCount = 0;
 function alwaysYes() {
-    populateHearts();
+    noClickCount++;
+    switch (noClickCount) {
+        case 1:
+            alert('Are you sure?');  // First prompt if "No" is clicked
+            break;
+        case 2:
+            alert('Are you really sure?');  // Second prompt
+            break;
+        case 3:
+            alert('Last chance to say yes!');  // Third prompt
+            break;
+        default:
+            populateHearts();  // After the third "No", it still populates hearts
+            break;
+    }
 }
 
 function populateHearts() {
@@ -16,12 +31,3 @@ function populateHearts() {
         document.body.appendChild(heart);
     }
 }
-
-setTimeout(function() {
-    const responses = document.getElementById('responses');
-    for (let i = 0; i < 50; i++) {
-        let response = document.createElement('div');
-        response.textContent = 'Yes!';
-        responses.appendChild(response);
-    }
-}, 30000);
