@@ -29,9 +29,12 @@ button {
 }
 
 #specialImageContainer {
-    text-align: center; /* Centers the image container */
-    margin-top: -50px; /* Space above the container */
+    display: none; /* Start with the container hidden */
+    text-align: center;
+    margin-top: -100px; /* Increased negative margin to move up */
+    transform: translateY(-50px); /* Additional upward transformation */
 }
+
 
 #specialImage {
     display: none;
