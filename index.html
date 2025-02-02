@@ -6,16 +6,27 @@
 <title>Be My Valentine</title>
 <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Brush Script MT', cursive; /* Script-like font for more aesthetic text */
         text-align: center;
         padding: 50px;
-        background-color: pink;
+        background-color: #ffe0f0; /* Soft pink background for a more tender look */
+        color: #800020; /* Maroon text to complement the soft pink */
     }
     button {
         margin: 20px;
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
+        background-color: #ffb6c1; /* Soft pink background for buttons */
+        border: none;
+        border-radius: 15px; /* Rounded corners for softer buttons */
+        color: #800020; /* Text color for buttons */
+        font-family: 'Brush Script MT', cursive;
+        box-shadow: 2px 2px 5px #888888; /* Subtle shadow for depth */
+        transition: all 0.3s ease;
+    }
+    button:hover {
+        background-color: #ff748c; /* Slightly darker pink on hover for interaction feedback */
     }
     #specialImage {
         display: none;
@@ -30,7 +41,7 @@
 <button id="yesBtn">Yes</button>
 <button id="noBtn">No</button>
 <div id="responses"></div>
-<img id="specialImage" src="https://imgur.com/a/XuF0uGu" alt="Special Image">
+<img id="specialImage" src="YOUR_IMAGE_URL_HERE" alt="Special Image">
 <script>
 document.getElementById('yesBtn').addEventListener('click', function() {
     populateHearts();
@@ -76,3 +87,4 @@ function showSpecialImage() {
 </script>
 </body>
 </html>
+
