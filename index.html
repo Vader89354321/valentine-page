@@ -32,7 +32,7 @@
     #responses {
         position: relative;
         width: 100%;
-        height: 500px;
+        height: 600px; /* Ensure there's enough vertical space for the larger heart */
         overflow: hidden;
     }
     .heart {
@@ -40,9 +40,10 @@
         font-size: 24px;
     }
     #specialImageContainer {
-        display: none; /* Initial state hidden */
+        display: none;
         text-align: center;
-        margin-top: 20px;
+        margin-top: -100px;
+        transform: translateY(-50px); /* Moves image further up */
     }
     #specialImage {
         max-width: 300px;
@@ -89,7 +90,7 @@ function alwaysYes() {
         default:
             alert("Okay, you said 'Yes'!");
             populateHearts();
-            document.getElementById('noBtn').style.display = 'none'; // Hides the No button
+            document.getElementById('noBtn').style.display = 'none';
             showSpecialImage();
             break;
     }
@@ -97,11 +98,11 @@ function alwaysYes() {
 
 function populateHearts() {
     const responses = document.getElementById('responses');
-    responses.innerHTML = ''; // Clear previous hearts
-    const count = 150; // Number of hearts
+    responses.innerHTML = '';
+    const count = 150;
     const centerX = responses.offsetWidth / 2;
-    const centerY = responses.offsetHeight / 2 - 50;
-    const size = 10; // Size factor for the heart shape
+    const centerY = responses.offsetHeight / 2 - 100;
+    const size = 15;
 
     for (let i = 0; i < count; i++) {
         const angle = Math.PI * i / (count / 2);
@@ -118,8 +119,9 @@ function populateHearts() {
 }
 
 function showSpecialImage() {
-    document.getElementById('specialImageContainer').style.display = 'block'; // Shows the image container
+    document.getElementById('specialImageContainer').style.display = 'block';
 }
 </script>
 </body>
 </html>
+
