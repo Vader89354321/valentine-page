@@ -12,8 +12,7 @@ function populateHearts() {
     responses.innerHTML = ''; // Clear previous hearts
     const count = 150; // Number of hearts
     const centerX = responses.offsetWidth / 2;
-    const centerY = responses.offsetHeight / 2 - 100;
-    const size = 40; // Adjust the size factor for a larger heart shape
+    const centerY = responses.offsetHeight / 2 - 100 + 50; // Add 50 pixels to move hearts down
 
     for (let i = 0; i < count; i++) {
         const angle = Math.PI * i / (count / 2);
