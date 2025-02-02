@@ -13,7 +13,7 @@ function populateHearts() {
     const count = 150; // Number of hearts
     const centerX = responses.offsetWidth / 2;
     const centerY = responses.offsetHeight / 2 - 100;
-    const size = 15; // Adjust the size factor for a larger heart shape
+    const size = 40; // Adjust the size factor for a larger heart shape
 
     for (let i = 0; i < count; i++) {
         const angle = Math.PI * i / (count / 2);
