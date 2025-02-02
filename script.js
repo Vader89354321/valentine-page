@@ -26,15 +26,21 @@ function alwaysYes() {
 function populateHearts() {
     const responses = document.getElementById('responses');
     responses.innerHTML = ''; // Clear previous hearts
-    let count = 100; // Number of hearts
+    const count = 100; // Number of hearts
+    const centerX = responses.clientWidth / 2;
+    const centerY = responses.clientHeight / 2;
+    const size = 100; // Size factor for the heart shape
+
     for (let i = 0; i < count; i++) {
+        let angle = Math.PI * 2 * i / count;
+        let x = 16 * Math.pow(Math.sin(angle), 3);
+        let y = -(13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle));
         let heart = document.createElement('span');
         heart.textContent = '❤️';
         heart.className = 'heart';
-        // Random position within the responses div
-        heart.style.top = Math.random() * (responses.clientHeight - 20) + 'px'; // Minus 20 to ensure it's fully visible
-        heart.style.left = Math.random() * (responses.clientWidth - 20) + 'px';
+        heart.style.position = 'absolute';
+        heart.style.left = (centerX + x * size) + 'px';
+        heart.style.top = (centerY + y * size) + 'px';
         responses.appendChild(heart);
     }
 }
-
