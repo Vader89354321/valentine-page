@@ -23,10 +23,12 @@ body {
 
 #specialImageContainer {
     text-align: center;
-    position: relative; /* Position relative to its normal position */
-    top: -5000px; /* Move the container up */
+    position: relative;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust the position to the center */
     display: none; /* Keep it hidden initially */
-    width: 100%; /* Ensure it takes the full width to center the content */
+    width: 100%; /* Ensure it takes the full width */
 }
 
 #specialImage {
