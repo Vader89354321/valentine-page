@@ -1,30 +1,10 @@
 document.getElementById('yesBtn').addEventListener('click', function() {
+    showSpecialImage();
     populateHearts();
 });
 
-let noClickCount = 0;
-function alwaysYes() {
-    noClickCount++;
-    switch (noClickCount) {
-        case 1:
-            alert('Are you sure?');  // First prompt if "No" is clicked
-            break;
-        case 2:
-            alert('Are you really sure?');  // Second prompt
-            break;
-        case 3:
-            alert('Last chance to say yes!');  // Third prompt
-            break;
-        default:
-            alert("Okay, you said 'Yes'!"); // Informing user it defaults to yes
-            populateHearts();  // Defaulting to "Yes" after the third "No"
-            document.getElementById('noBtn').style.display = 'none'; // Hides the No button
-            break;
-    }
-}
-
 function showSpecialImage() {
-    document.getElementById('specialImageContainer').style.display = 'block'; // Ensures the image container is displayed
+    document.getElementById('specialImageContainer').style.display = 'block';
 }
 
 function populateHearts() {
@@ -32,8 +12,8 @@ function populateHearts() {
     responses.innerHTML = ''; // Clear previous hearts
     const count = 150; // Number of hearts
     const centerX = responses.offsetWidth / 2;
-    const centerY = responses.offsetHeight / 2 - 100; // Adjusted to better center the heart
-    const size = 15; // Increased size factor for a larger heart shape
+    const centerY = responses.offsetHeight / 2 - 100;
+    const size = 15; // Adjust the size factor for a larger heart shape
 
     for (let i = 0; i < count; i++) {
         const angle = Math.PI * i / (count / 2);
@@ -48,4 +28,3 @@ function populateHearts() {
         responses.appendChild(heart);
     }
 }
-
