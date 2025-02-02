@@ -13,7 +13,7 @@ button {
 #responses {
     position: relative;
     width: 100%;
-    height: 300px; /* Set a fixed height or base it on the screen size */
+    height: 600px; // Adjust the height to be sufficient for the heart shape
     overflow: hidden;
 }
 
