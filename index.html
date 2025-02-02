@@ -40,13 +40,13 @@
         font-size: 24px;
     }
     #specialImageContainer {
+        display: none; /* Initial state hidden */
         text-align: center;
         margin-top: 20px;
     }
     #specialImage {
-        width: 100%;
         max-width: 300px;
-        margin: 0 auto;
+        height: auto;
     }
     .caption {
         font-family: 'Dancing Script', cursive;
@@ -118,7 +118,7 @@ function populateHearts() {
 }
 
 function showSpecialImage() {
-    document.getElementById('specialImage').style.display = 'block'; // Show the image
+    document.getElementById('specialImageContainer').style.display = 'block'; // Shows the image container
 }
 </script>
 </body>
