@@ -39,11 +39,21 @@
         position: absolute;
         font-size: 24px;
     }
+    #specialImageContainer {
+        text-align: center;
+        margin-top: 20px;
+    }
     #specialImage {
         display: none;
         width: 100%;
         max-width: 300px;
-        margin-top: 20px;
+        margin: 0 auto;
+    }
+    .caption {
+        font-family: 'Dancing Script', cursive;
+        color: #800020;
+        font-size: 20px;
+        margin-top: 10px;
     }
 </style>
 </head>
@@ -52,7 +62,10 @@
 <button id="yesBtn">Yes</button>
 <button id="noBtn">No</button>
 <div id="responses"></div>
-<img id="specialImage" src="https://i.imgur.com/T6WgWPd.png" alt="Special Image">
+<div id="specialImageContainer">
+    <img id="specialImage" src="https://i.imgur.com/T6WgWPd.png" alt="Special Image">
+    <div class="caption">Here is a primordial spinach for you!</div>
+</div>
 <script>
 document.getElementById('yesBtn').addEventListener('click', function() {
     populateHearts();
@@ -103,8 +116,3 @@ function showSpecialImage() {
 </script>
 </body>
 </html>
-
-</script>
-</body>
-</html>
-
