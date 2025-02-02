@@ -30,7 +30,7 @@ button {
 
 #specialImageContainer {
     text-align: center; /* Centers the image container */
-    margin-top: 20px; /* Space above the container */
+    margin-top: -50px; /* Space above the container */
 }
 
 #specialImage {
