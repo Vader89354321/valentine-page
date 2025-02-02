@@ -30,13 +30,14 @@
         background-color: #ff748c;
     }
     #responses {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 20px;
+        position: relative;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
     }
     .heart {
-        margin: 5px;
+        position: absolute;
+        font-size: 24px;
     }
     #specialImage {
         display: none;
@@ -85,10 +86,13 @@ function alwaysYes() {
 function populateHearts() {
     const responses = document.getElementById('responses');
     responses.innerHTML = ''; // Clear previous hearts
-    for (let i = 0; i < 100; i++) {
+    let count = 100; // Number of hearts
+    for (let i = 0; i < count; i++) {
         let heart = document.createElement('span');
         heart.textContent = '❤️';
         heart.className = 'heart';
+        heart.style.top = Math.random() * (responses.clientHeight - 20) + 'px';
+        heart.style.left = Math.random() * (responses.clientWidth - 20) + 'px';
         responses.appendChild(heart);
     }
 }
@@ -96,6 +100,10 @@ function populateHearts() {
 function showSpecialImage() {
     document.getElementById('specialImage').style.display = 'block'; // Show the image
 }
+</script>
+</body>
+</html>
+
 </script>
 </body>
 </html>
