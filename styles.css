@@ -26,3 +26,23 @@ button {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
 }
+
+#specialImageContainer {
+    text-align: center; /* Centers the image container */
+    margin-top: 20px; /* Space above the container */
+}
+
+#specialImage {
+    display: none;
+    width: 100%;
+    max-width: 300px; /* Adjust the size as necessary */
+    margin: 0 auto; /* Centers the image */
+}
+
+.caption {
+    font-family: 'Dancing Script', cursive;
+    color: #800020; /* Matching the theme's color */
+    font-size: 20px; /* Adjust size as necessary */
+    margin-top: 10px; /* Space between the image and the caption */
+}
+
