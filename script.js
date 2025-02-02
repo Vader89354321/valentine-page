@@ -24,14 +24,17 @@ function alwaysYes() {
 }
 
 function populateHearts() {
-    document.getElementById('responses').innerHTML = ''; // Clear previous responses if any
-    for (let i = 0; i < 100; i++) {
-        let heart = document.createElement('div');
-        heart.className = 'heart';
+    const responses = document.getElementById('responses');
+    responses.innerHTML = ''; // Clear previous hearts
+    let count = 100; // Number of hearts
+    for (let i = 0; i < count; i++) {
+        let heart = document.createElement('span');
         heart.textContent = '❤️';
-        heart.style.left = Math.random() * window.innerWidth + 'px';
-        heart.style.top = Math.random() * window.innerHeight + 'px';
-        document.body.appendChild(heart);
+        heart.className = 'heart';
+        // Random position within the responses div
+        heart.style.top = Math.random() * (responses.clientHeight - 20) + 'px'; // Minus 20 to ensure it's fully visible
+        heart.style.left = Math.random() * (responses.clientWidth - 20) + 'px';
+        responses.appendChild(heart);
     }
 }
 
