@@ -34,3 +34,4 @@ function populateHearts() {
         document.body.appendChild(heart);
     }
 }
+
