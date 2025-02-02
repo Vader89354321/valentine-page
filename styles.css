@@ -9,7 +9,7 @@ body {
 #responses {
     position: relative;
     width: 100%;
-    height: 600px; /* Adjusted for visibility */
+    height: 1000px; /* Adjusted for visibility */
     overflow: hidden;
     display: flex;
     justify-content: center;
