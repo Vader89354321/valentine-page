@@ -1,6 +1,6 @@
 document.getElementById('yesBtn').addEventListener('click', function() {
-    showSpecialImage();
-    populateHearts();
+    populateHearts(); // First populate hearts
+    showSpecialImage(); // Then display the image
 });
 
 function showSpecialImage() {
