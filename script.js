@@ -1,18 +1,39 @@
 document.getElementById('yesBtn').addEventListener('click', function() {
-    populateHearts(); // First populate hearts
-    showSpecialImage(); // Then display the image
+    populateHearts();
+    showSpecialImage();
 });
 
-function showSpecialImage() {
-    document.getElementById('specialImageContainer').style.display = 'block';
+document.getElementById('noBtn').addEventListener('click', alwaysYes);
+
+let noClickCount = 0;
+function alwaysYes() {
+    noClickCount++;
+    switch (noClickCount) {
+        case 1:
+            alert('Are you sure?');
+            break;
+        case 2:
+            alert('Are you really sure?');
+            break;
+        case 3:
+            alert('Last chance to say yes!');
+            break;
+        default:
+            alert("Okay, you said 'Yes'!");
+            populateHearts();
+            document.getElementById('noBtn').style.display = 'none';
+            showSpecialImage();
+            break;
+    }
 }
 
 function populateHearts() {
     const responses = document.getElementById('responses');
-    responses.innerHTML = ''; // Clear previous hearts
-    const count = 150; // Number of hearts
+    responses.innerHTML = '';
+    const count = 150;
     const centerX = responses.offsetWidth / 2;
-    const centerY = responses.offsetHeight / 2 - 100 + 50; // Add 50 pixels to move hearts down
+    const centerY = responses.offsetHeight / 2 - 100;
+    const size = 15;
 
     for (let i = 0; i < count; i++) {
         const angle = Math.PI * i / (count / 2);
@@ -26,4 +47,8 @@ function populateHearts() {
         heart.style.top = `${centerY + y}px`;
         responses.appendChild(heart);
     }
+}
+
+function showSpecialImage() {
+    document.getElementById('specialImageContainer').style.display = 'block';
 }
