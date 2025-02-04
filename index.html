@@ -29,25 +29,29 @@
     button:hover {
         background-color: #ff748c;
     }
-    #responses {
-        position: relative;
-        width: 100%;
-        height: 600px; /* Ensure there's enough vertical space for the larger heart */
-        overflow: hidden;
-    }
-    .heart {
-        position: absolute;
-        font-size: 24px;
-    }
     #specialImageContainer {
         display: none;
-        text-align: center;
-        margin-top: -100px;
-        transform: translateY(-50px); /* Moves image further up */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -150%); /* Increased upward translation */
+        width: auto;
+        z-index: 20; /* Higher z-index */
     }
     #specialImage {
         max-width: 300px;
         height: auto;
+    }
+    #responses {
+        position: relative;
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+        z-index: 10; /* Lower z-index */
+    }
+    .heart {
+        position: absolute;
+        font-size: 24px;
     }
     .caption {
         font-family: 'Dancing Script', cursive;
@@ -61,66 +65,11 @@
 <h1>Will You Be My Valentine?</h1>
 <button id="yesBtn">Yes</button>
 <button id="noBtn">No</button>
-<div id="responses"></div>
 <div id="specialImageContainer">
     <img id="specialImage" src="https://i.imgur.com/T6WgWPd.png" alt="Special Image">
     <div class="caption">Here is a primordial spinach for you!</div>
 </div>
-<script>
-document.getElementById('yesBtn').addEventListener('click', function() {
-    populateHearts();
-    showSpecialImage();
-});
-
-document.getElementById('noBtn').addEventListener('click', alwaysYes);
-
-let noClickCount = 0;
-function alwaysYes() {
-    noClickCount++;
-    switch (noClickCount) {
-        case 1:
-            alert('Are you sure?');
-            break;
-        case 2:
-            alert('Are you really sure?');
-            break;
-        case 3:
-            alert('Last chance to say yes!');
-            break;
-        default:
-            alert("Okay, you said 'Yes'!");
-            populateHearts();
-            document.getElementById('noBtn').style.display = 'none';
-            showSpecialImage();
-            break;
-    }
-}
-
-function populateHearts() {
-    const responses = document.getElementById('responses');
-    responses.innerHTML = '';
-    const count = 150;
-    const centerX = responses.offsetWidth / 2;
-    const centerY = responses.offsetHeight / 2 - 100;
-    const size = 15;
-
-    for (let i = 0; i < count; i++) {
-        const angle = Math.PI * i / (count / 2);
-        const x = size * (16 * Math.pow(Math.sin(angle), 3));
-        const y = -size * (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle));
-        let heart = document.createElement('span');
-        heart.textContent = '❤️';
-        heart.className = 'heart';
-        heart.style.position = 'absolute';
-        heart.style.left = `${centerX + x}px`;
-        heart.style.top = `${centerY + y}px`;
-        responses.appendChild(heart);
-    }
-}
-
-function showSpecialImage() {
-    document.getElementById('specialImageContainer').style.display = 'block';
-}
-</script>
+<div id="responses"></div>
+<script src="script (1).js"></script>
 </body>
 </html>
