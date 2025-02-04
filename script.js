@@ -33,7 +33,7 @@ function populateHearts() {
     const count = 150;
     const centerX = responses.offsetWidth / 2;
     const centerY = responses.offsetHeight / 2 - 100;
-    const size = 15;
+    const size = 100;
 
     for (let i = 0; i < count; i++) {
         const angle = Math.PI * i / (count / 2);
