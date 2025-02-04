@@ -7,13 +7,9 @@ body {
 }
 
 #specialImageContainer {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: auto;
-    z-index: 10;
+    display: none; /* Initially hidden, shown on button click */
+    text-align: center; /* Centers the image horizontally */
+    margin-top: 20px; /* Adds some space between the text and the image */
 }
 
 #responses {
