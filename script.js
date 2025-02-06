@@ -37,9 +37,9 @@ function showSpecialImage() {
     document.getElementById('specialImageContainer').style.display = 'block';
 }
 
-// Function to create a **scalable** heart shape on the right side
+// Function to create a **smaller scalable** heart shape on the right side
 function populateHeartOfHearts() {
-    console.log("Generating scalable heart shape...");
+    console.log("Generating smaller heart shape...");
 
     const container = document.getElementById('heartContainer');
     if (!container) {
@@ -49,9 +49,9 @@ function populateHeartOfHearts() {
 
     container.innerHTML = ''; // Clear previous hearts
 
-    const count = 50; // Fewer hearts for a smaller effect
-    const size = Math.min(window.innerWidth, window.innerHeight) * 0.05; // Scales based on screen size
-    const centerX = window.innerWidth - 150; // Adjusted positioning
+    const count = 40; // Fewer hearts for a compact shape
+    const size = Math.min(window.innerWidth, window.innerHeight) * 0.03; // 🔥 Reduced scaling factor (Smaller heart)
+    const centerX = window.innerWidth - 120; // Shift it slightly left to keep inside screen
     const centerY = window.innerHeight / 2;
 
     for (let i = 0; i < count; i++) {
@@ -68,7 +68,7 @@ function populateHeartOfHearts() {
             heart.style.top = `${centerY + y}px`;
             heart.style.opacity = '0';
             heart.style.transition = 'opacity 0.3s ease-in';
-            heart.style.transform = `scale(${size / 20})`; // 🔥 Scales based on screen size
+            heart.style.transform = `scale(${size / 30})`; // 🔥 Made even smaller
 
             container.appendChild(heart);
             console.log(`Added heart at ${heart.style.left}, ${heart.style.top}`);
@@ -82,4 +82,3 @@ function populateHeartOfHearts() {
 
 // Ensure function is globally accessible
 window.populateHeartOfHearts = populateHeartOfHearts;
-
