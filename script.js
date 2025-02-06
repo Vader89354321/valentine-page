@@ -37,9 +37,9 @@ function showSpecialImage() {
     document.getElementById('specialImageContainer').style.display = 'block';
 }
 
-// Function to create a heart shape made of hearts on the right side
+// Function to create a **scalable** heart shape on the right side
 function populateHeartOfHearts() {
-    console.log("Generating heart shape..."); // Debugging
+    console.log("Generating scalable heart shape...");
 
     const container = document.getElementById('heartContainer');
     if (!container) {
@@ -49,10 +49,10 @@ function populateHeartOfHearts() {
 
     container.innerHTML = ''; // Clear previous hearts
 
-    const count = 75; // Number of hearts
-    const size = 5;  // Scaling factor for heart shape
-    const centerX = window.innerWidth - 250; // Right side position
-    const centerY = window.innerHeight / 2; // Center vertically
+    const count = 50; // Fewer hearts for a smaller effect
+    const size = Math.min(window.innerWidth, window.innerHeight) * 0.05; // Scales based on screen size
+    const centerX = window.innerWidth - 150; // Adjusted positioning
+    const centerY = window.innerHeight / 2;
 
     for (let i = 0; i < count; i++) {
         setTimeout(() => {
@@ -67,19 +67,19 @@ function populateHeartOfHearts() {
             heart.style.left = `${centerX + x}px`;
             heart.style.top = `${centerY + y}px`;
             heart.style.opacity = '0';
-            heart.style.transition = 'opacity 0.5s ease-in';
+            heart.style.transition = 'opacity 0.3s ease-in';
+            heart.style.transform = `scale(${size / 20})`; // 🔥 Scales based on screen size
 
             container.appendChild(heart);
             console.log(`Added heart at ${heart.style.left}, ${heart.style.top}`);
 
             setTimeout(() => {
                 heart.style.opacity = '1';
-            }, 50);
-        }, i * 80);
+            }, 30);
+        }, i * 20);
     }
 }
 
 // Ensure function is globally accessible
 window.populateHeartOfHearts = populateHeartOfHearts;
-
 
