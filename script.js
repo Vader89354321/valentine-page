@@ -51,7 +51,7 @@ function populateHeartOfHearts() {
 
     container.innerHTML = ''; // Clear previous hearts
 
-    const count = 40; // Number of hearts in each shape
+    const count = 150; // Number of hearts in each shape
     const size = Math.min(window.innerWidth, window.innerHeight) * 0.03; // Scaled based on screen size
     const leftX = window.innerWidth * 0.25; // Left heart position
     const rightX = window.innerWidth * 0.75; // Right heart position
