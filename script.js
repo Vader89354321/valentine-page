@@ -49,7 +49,7 @@ function populateHeartOfHearts(side) {
         return;
     }
 
-    const count = 70; // Fewer hearts for a compact shape
+    const count = 150; // Fewer hearts for a compact shape
     const size = Math.min(window.innerWidth, window.innerHeight) * 0.03; // 🔥 Smaller scaling factor
     const centerX = side === "right" ? window.innerWidth - 120 : 120; // 🔥 Left or right side
     const centerY = window.innerHeight / 2;
