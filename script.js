@@ -30,23 +30,37 @@ function alwaysYes() {
 function populateHearts() {
     const responses = document.getElementById('responses');
     responses.innerHTML = '';
-    const count = 150;
-    const centerX = responses.offsetWidth / 2;
-    const centerY = responses.offsetHeight / 2 - 100;
+    const count = 75; // Half the original count since we're doing two sides
     const size = 100;
+    const centerY = responses.offsetHeight / 2 - 100;
 
-    for (let i = 0; i < count; i++) {
-        const angle = Math.PI * i / (count / 2);
-        const x = size * (16 * Math.pow(Math.sin(angle), 3));
-        const y = -size * (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle));
-        let heart = document.createElement('span');
-        heart.textContent = '❤️';
-        heart.className = 'heart';
-        heart.style.position = 'absolute';
-        heart.style.left = `${centerX + x}px`;
-        heart.style.top = `${centerY + y}px`;
-        responses.appendChild(heart);
+    function createHeart(xOffset, delayMultiplier) {
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                const angle = Math.PI * i / (count / 2);
+                const x = size * (16 * Math.pow(Math.sin(angle), 3));
+                const y = -size * (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle));
+                
+                let heart = document.createElement('span');
+                heart.textContent = '❤️';
+                heart.className = 'heart';
+                heart.style.position = 'absolute';
+                heart.style.left = `${xOffset + x}px`;
+                heart.style.top = `${centerY + y}px`;
+                heart.style.opacity = '0';
+                heart.style.transition = 'opacity 0.5s ease-in';
+                responses.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.style.opacity = '1';
+                }, 50);
+            }, i * 100 * delayMultiplier);
+        }
     }
+
+    const centerX = responses.offsetWidth / 2;
+    createHeart(centerX - 150, 1); // Left side
+    createHeart(centerX + 150, 2); // Right side
 }
 
 function showSpecialImage() {
