@@ -18,3 +18,19 @@ body {
     font-size: 20px;
     margin-top: 10px;
 }
+#heartContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Makes sure it doesn't interfere with clicking */
+    z-index: 5;
+}
+
+.heart {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
