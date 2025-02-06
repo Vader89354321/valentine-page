@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById('yesBtn').addEventListener('click', function() {
         showSpecialImage();
-        populateHeartOfHearts(); // Show the heart shape on the right
+        populateHeartOfHearts("right"); // Show heart on the right
+        populateHeartOfHearts("left");  // Show heart on the left
     });
 
     document.getElementById('noBtn').addEventListener('click', alwaysYes);
@@ -28,7 +29,8 @@ function alwaysYes() {
             alert("Okay, you said 'Yes'!");
             document.getElementById('noBtn').style.display = 'none';
             showSpecialImage();
-            populateHeartOfHearts(); // Trigger heart effect
+            populateHeartOfHearts("right"); // Trigger right heart effect
+            populateHeartOfHearts("left");  // Trigger left heart effect
             break;
     }
 }
@@ -37,9 +39,9 @@ function showSpecialImage() {
     document.getElementById('specialImageContainer').style.display = 'block';
 }
 
-// Function to create a **smaller scalable** heart shape on the right side
-function populateHeartOfHearts() {
-    console.log("Generating smaller heart shape...");
+// Function to create a **scalable** heart shape on both sides
+function populateHeartOfHearts(side) {
+    console.log(`Generating heart shape on ${side} side...`);
 
     const container = document.getElementById('heartContainer');
     if (!container) {
@@ -47,11 +49,9 @@ function populateHeartOfHearts() {
         return;
     }
 
-    container.innerHTML = ''; // Clear previous hearts
-
-    const count = 40; // Fewer hearts for a compact shape
-    const size = Math.min(window.innerWidth, window.innerHeight) * 0.03; // 🔥 Reduced scaling factor (Smaller heart)
-    const centerX = window.innerWidth - 120; // Shift it slightly left to keep inside screen
+    const count = 70; // Fewer hearts for a compact shape
+    const size = Math.min(window.innerWidth, window.innerHeight) * 0.03; // 🔥 Smaller scaling factor
+    const centerX = side === "right" ? window.innerWidth - 120 : 120; // 🔥 Left or right side
     const centerY = window.innerHeight / 2;
 
     for (let i = 0; i < count; i++) {
@@ -68,10 +68,10 @@ function populateHeartOfHearts() {
             heart.style.top = `${centerY + y}px`;
             heart.style.opacity = '0';
             heart.style.transition = 'opacity 0.3s ease-in';
-            heart.style.transform = `scale(${size / 30})`; // 🔥 Made even smaller
+            heart.style.transform = `scale(${size / 30})`; // 🔥 Scales properly
 
             container.appendChild(heart);
-            console.log(`Added heart at ${heart.style.left}, ${heart.style.top}`);
+            console.log(`Added heart at ${heart.style.left}, ${heart.style.top} on ${side} side`);
 
             setTimeout(() => {
                 heart.style.opacity = '1';
