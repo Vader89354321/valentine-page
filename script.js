@@ -50,7 +50,7 @@ function populateHeartOfHearts() {
     container.innerHTML = ''; // Clear previous hearts
 
     const count = 75; // Number of hearts
-    const size = 40;  // Scaling factor for heart shape
+    const size = 20;  // Scaling factor for heart shape
     const centerX = window.innerWidth - 250; // Right side position
     const centerY = window.innerHeight / 2; // Center vertically
 
