@@ -37,9 +37,9 @@ function showSpecialImage() {
     document.getElementById('specialImageContainer').style.display = 'block';
 }
 
-// Function to create a **heart shape with centered text**
+// Function to create a **smaller scalable** heart shape on the right side
 function populateHeartOfHearts() {
-    console.log("Generating heart shape with centered text...");
+    console.log("Generating smaller heart shape...");
 
     const container = document.getElementById('heartContainer');
     if (!container) {
@@ -49,7 +49,7 @@ function populateHeartOfHearts() {
 
     container.innerHTML = ''; // Clear previous hearts
 
-    const count = 150; // Fewer hearts for a compact shape
+    const count = 40; // Fewer hearts for a compact shape
     const size = Math.min(window.innerWidth, window.innerHeight) * 0.03; // Scaled based on screen size
     const centerX = window.innerWidth - 120; // Adjusted positioning
     const centerY = window.innerHeight / 2;
@@ -60,35 +60,21 @@ function populateHeartOfHearts() {
             const x = size * (16 * Math.pow(Math.sin(angle), 3));
             const y = -size * (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle));
 
-            // Create heart container
-            let heartContainer = document.createElement('div');
-            heartContainer.className = 'heart';
-            heartContainer.style.position = 'absolute';
-            heartContainer.style.left = `${centerX + x}px`;
-            heartContainer.style.top = `${centerY + y}px`;
-            heartContainer.style.opacity = '0';
-            heartContainer.style.transition = 'opacity 0.3s ease-in';
-            heartContainer.style.transform = `scale(${size / 30})`;
+            let heart = document.createElement('span');
+            heart.textContent = '❤️';
+            heart.className = 'heart';
+            heart.style.position = 'absolute';
+            heart.style.left = `${centerX + x}px`;
+            heart.style.top = `${centerY + y}px`;
+            heart.style.opacity = '0';
+            heart.style.transition = 'opacity 0.3s ease-in';
+            heart.style.transform = `scale(${size / 30})`; // 🔥 Scaled properly
 
-            // Create emoji heart
-            let emojiHeart = document.createElement('div');
-            emojiHeart.className = 'emoji-heart';
-            emojiHeart.textContent = '❤️';
-
-            // Create text for the center of each heart
-            let heartText = document.createElement('div');
-            heartText.className = 'heart-text';
-            heartText.textContent = 'I love you, Alexie!';
-
-            // Append both elements inside the heart container
-            heartContainer.appendChild(emojiHeart);
-            heartContainer.appendChild(heartText);
-
-            container.appendChild(heartContainer);
-            console.log(`Added heart at ${heartContainer.style.left}, ${heartContainer.style.top}`);
+            container.appendChild(heart);
+            console.log(`Added heart at ${heart.style.left}, ${heart.style.top}`);
 
             setTimeout(() => {
-                heartContainer.style.opacity = '1';
+                heart.style.opacity = '1';
             }, 30);
         }, i * 20);
     }
