@@ -36,13 +36,15 @@ body {
 }
 #gifContainer {
     position: fixed;
-    bottom: 5px;
-    right:  20px;
+    bottom: 5px; /* Tight to the bottom */
+    right: 5px;  /* Tight to the right */
     display: none; /* Hidden until Yes is clicked */
     z-index: 100; /* Ensure it's above other content */
+    text-align: left !important; /* 🔥 Override inherited centering */
 }
 
 .dancing-gif {
-    width: 10px; /* Adjust size */
+    width: 50px; /* 🔥 Much smaller */
     height: auto;
+    display: block; /* 🔥 Prevent unwanted inline alignment */
 }
