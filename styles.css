@@ -24,12 +24,12 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none; /* Makes sure it doesn't interfere with clicking */
+    pointer-events: none; /* Prevent interaction issues */
     z-index: 5;
 }
 
 .heart {
-    position: absolute;
+    position: absolute !important;
     font-size: 24px;
     opacity: 0;
     transition: opacity 0.5s ease-in;
