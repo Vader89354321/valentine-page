@@ -1,11 +1,17 @@
-document.getElementById('yesBtn').addEventListener('click', function() {
-    showSpecialImage();
-    populateHeartOfHearts(); // Call the function to show hearts
+// Ensure script runs after the page loads
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Script loaded successfully!");
+
+    document.getElementById('yesBtn').addEventListener('click', function() {
+        showSpecialImage();
+        populateHeartOfHearts(); // Show the heart shape on the right
+    });
+
+    document.getElementById('noBtn').addEventListener('click', alwaysYes);
 });
 
-document.getElementById('noBtn').addEventListener('click', alwaysYes);
-
 let noClickCount = 0;
+
 function alwaysYes() {
     noClickCount++;
     switch (noClickCount) {
@@ -31,16 +37,21 @@ function showSpecialImage() {
     document.getElementById('specialImageContainer').style.display = 'block';
 }
 
-// Function to create a heart shape on the right side
+// Function to create a heart shape made of hearts on the right side
 function populateHeartOfHearts() {
     console.log("Generating heart shape..."); // Debugging
 
     const container = document.getElementById('heartContainer');
+    if (!container) {
+        console.error("ERROR: #heartContainer does not exist!");
+        return;
+    }
+
     container.innerHTML = ''; // Clear previous hearts
 
-    const count = 75; // Reduced number of hearts
-    const size = 40; // Adjusted for better positioning
-    const centerX = window.innerWidth - 250; // Ensure it's within the viewport
+    const count = 75; // Number of hearts
+    const size = 40;  // Scaling factor for heart shape
+    const centerX = window.innerWidth - 250; // Right side position
     const centerY = window.innerHeight / 2; // Center vertically
 
     for (let i = 0; i < count; i++) {
@@ -57,9 +68,9 @@ function populateHeartOfHearts() {
             heart.style.top = `${centerY + y}px`;
             heart.style.opacity = '0';
             heart.style.transition = 'opacity 0.5s ease-in';
-            container.appendChild(heart);
 
-            console.log(`Heart ${i} positioned at: (${heart.style.left}, ${heart.style.top})`); // Debugging
+            container.appendChild(heart);
+            console.log(`Added heart at ${heart.style.left}, ${heart.style.top}`);
 
             setTimeout(() => {
                 heart.style.opacity = '1';
@@ -67,4 +78,8 @@ function populateHeartOfHearts() {
         }, i * 80);
     }
 }
+
+// Ensure function is globally accessible
+window.populateHeartOfHearts = populateHeartOfHearts;
+
 
