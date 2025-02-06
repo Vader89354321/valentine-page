@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('yesBtn').addEventListener('click', function() {
         showSpecialImage();
         populateHeartOfHearts(); // Show hearts on both sides
+        showGif(); // Show the GIF in the bottom-right corner
     });
 
     document.getElementById('noBtn').addEventListener('click', alwaysYes);
@@ -29,6 +30,7 @@ function alwaysYes() {
             document.getElementById('noBtn').style.display = 'none';
             showSpecialImage();
             populateHeartOfHearts(); // Trigger heart effect
+            showGif(); // Show GIF
             break;
     }
 }
@@ -49,7 +51,7 @@ function populateHeartOfHearts() {
 
     container.innerHTML = ''; // Clear previous hearts
 
-    const count = 150; // Number of hearts in each shape
+    const count = 40; // Number of hearts in each shape
     const size = Math.min(window.innerWidth, window.innerHeight) * 0.03; // Scaled based on screen size
     const leftX = window.innerWidth * 0.25; // Left heart position
     const rightX = window.innerWidth * 0.75; // Right heart position
@@ -86,5 +88,27 @@ function populateHeartOfHearts() {
     createHeartShape(rightX, 1); // Populate right side
 }
 
+// Function to show the GIF in the bottom-right corner
+function showGif() {
+    let gifContainer = document.getElementById('gifContainer');
+
+    if (!gifContainer) {
+        gifContainer = document.createElement('div');
+        gifContainer.id = 'gifContainer';
+
+        let gif = document.createElement('img');
+        gif.src = 'https://media1.tenor.com/m/R08Jnfi5YfAAAAAd/worm-bean-boy-benjamin-doing-the-worm-dance-dancing.gif';
+        gif.alt = 'Dancing Worm GIF';
+        gif.className = 'dancing-gif';
+
+        gifContainer.appendChild(gif);
+        document.body.appendChild(gifContainer);
+    }
+
+    gifContainer.style.display = 'block';
+}
+
 // Ensure function is globally accessible
 window.populateHeartOfHearts = populateHeartOfHearts;
+window.showGif = showGif;
+
