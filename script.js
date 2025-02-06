@@ -37,9 +37,9 @@ function showSpecialImage() {
     document.getElementById('specialImageContainer').style.display = 'block';
 }
 
-// Function to create a **scalable heart shape with text inside**
+// Function to create a **heart shape with centered text**
 function populateHeartOfHearts() {
-    console.log("Generating heart shape with text...");
+    console.log("Generating heart shape with centered text...");
 
     const container = document.getElementById('heartContainer');
     if (!container) {
@@ -60,21 +60,35 @@ function populateHeartOfHearts() {
             const x = size * (16 * Math.pow(Math.sin(angle), 3));
             const y = -size * (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle));
 
-            let heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = "❤️<br><span class='heart-text'>I love you, Alexie!</span>"; // 🔥 Added text inside heart
-            heart.style.position = 'absolute';
-            heart.style.left = `${centerX + x}px`;
-            heart.style.top = `${centerY + y}px`;
-            heart.style.opacity = '0';
-            heart.style.transition = 'opacity 0.3s ease-in';
-            heart.style.transform = `scale(${size / 30})`;
+            // Create heart container
+            let heartContainer = document.createElement('div');
+            heartContainer.className = 'heart';
+            heartContainer.style.position = 'absolute';
+            heartContainer.style.left = `${centerX + x}px`;
+            heartContainer.style.top = `${centerY + y}px`;
+            heartContainer.style.opacity = '0';
+            heartContainer.style.transition = 'opacity 0.3s ease-in';
+            heartContainer.style.transform = `scale(${size / 30})`;
 
-            container.appendChild(heart);
-            console.log(`Added heart at ${heart.style.left}, ${heart.style.top}`);
+            // Create emoji heart
+            let emojiHeart = document.createElement('div');
+            emojiHeart.className = 'emoji-heart';
+            emojiHeart.textContent = '❤️';
+
+            // Create text for the center of each heart
+            let heartText = document.createElement('div');
+            heartText.className = 'heart-text';
+            heartText.textContent = 'I love you, Alexie!';
+
+            // Append both elements inside the heart container
+            heartContainer.appendChild(emojiHeart);
+            heartContainer.appendChild(heartText);
+
+            container.appendChild(heartContainer);
+            console.log(`Added heart at ${heartContainer.style.left}, ${heartContainer.style.top}`);
 
             setTimeout(() => {
-                heart.style.opacity = '1';
+                heartContainer.style.opacity = '1';
             }, 30);
         }, i * 20);
     }
