@@ -31,14 +31,17 @@ function showSpecialImage() {
     document.getElementById('specialImageContainer').style.display = 'block';
 }
 
-// Function to create a heart made of hearts
+// Function to create a heart shape on the right side
 function populateHeartOfHearts() {
+    console.log("Generating heart shape..."); // Debugging
+
     const container = document.getElementById('heartContainer');
     container.innerHTML = ''; // Clear previous hearts
-    const count = 100;
-    const size = 50;
-    const centerX = window.innerWidth - 200; // Right side position
-    const centerY = window.innerHeight / 2 - 50;
+
+    const count = 75; // Reduced number of hearts
+    const size = 40; // Adjusted for better positioning
+    const centerX = window.innerWidth - 250; // Ensure it's within the viewport
+    const centerY = window.innerHeight / 2; // Center vertically
 
     for (let i = 0; i < count; i++) {
         setTimeout(() => {
@@ -54,12 +57,14 @@ function populateHeartOfHearts() {
             heart.style.top = `${centerY + y}px`;
             heart.style.opacity = '0';
             heart.style.transition = 'opacity 0.5s ease-in';
-
             container.appendChild(heart);
+
+            console.log(`Heart ${i} positioned at: (${heart.style.left}, ${heart.style.top})`); // Debugging
 
             setTimeout(() => {
                 heart.style.opacity = '1';
             }, 50);
-        }, i * 80); // Delay each heart slightly
+        }, i * 80);
     }
 }
+
