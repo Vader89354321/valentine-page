@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('yesBtn').addEventListener('click', function() {
         showSpecialImage();
         populateHeartOfHearts(); // Show hearts on both sides
-        showGif(); // Show the GIF in the bottom-right corner
+        setTimeout(showGif, 45000); // 🔥 Delay GIF by 45 seconds (45000ms)
     });
 
     document.getElementById('noBtn').addEventListener('click', alwaysYes);
@@ -30,7 +30,7 @@ function alwaysYes() {
             document.getElementById('noBtn').style.display = 'none';
             showSpecialImage();
             populateHeartOfHearts(); // Trigger heart effect
-            showGif(); // Show GIF
+            setTimeout(showGif, 45000); // 🔥 Delay GIF by 45 seconds
             break;
     }
 }
@@ -88,8 +88,9 @@ function populateHeartOfHearts() {
     createHeartShape(rightX, 1); // Populate right side
 }
 
-// Function to show the GIF in the bottom-right corner
+// Function to show the GIF **after a 45-second delay**
 function showGif() {
+    console.log("Showing GIF after 45 seconds...");
     let gifContainer = document.getElementById('gifContainer');
 
     if (!gifContainer) {
@@ -111,4 +112,3 @@ function showGif() {
 // Ensure function is globally accessible
 window.populateHeartOfHearts = populateHeartOfHearts;
 window.showGif = showGif;
-
