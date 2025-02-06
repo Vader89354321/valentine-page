@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById('yesBtn').addEventListener('click', function() {
         showSpecialImage();
-        populateHeartOfHearts(); // Show the heart shape on the right
+        populateHeartOfHearts(); // Show hearts on both sides
     });
 
     document.getElementById('noBtn').addEventListener('click', alwaysYes);
@@ -37,9 +37,9 @@ function showSpecialImage() {
     document.getElementById('specialImageContainer').style.display = 'block';
 }
 
-// Function to create a **smaller scalable** heart shape on the right side
+// Function to create hearts on **both the left and right sides**
 function populateHeartOfHearts() {
-    console.log("Generating smaller heart shape...");
+    console.log("Generating heart shapes on both sides...");
 
     const container = document.getElementById('heartContainer');
     if (!container) {
@@ -49,35 +49,41 @@ function populateHeartOfHearts() {
 
     container.innerHTML = ''; // Clear previous hearts
 
-    const count = 40; // Fewer hearts for a compact shape
+    const count = 150; // Number of hearts in each shape
     const size = Math.min(window.innerWidth, window.innerHeight) * 0.03; // Scaled based on screen size
-    const centerX = window.innerWidth - 120; // Adjusted positioning
+    const leftX = window.innerWidth * 0.25; // Left heart position
+    const rightX = window.innerWidth * 0.75; // Right heart position
     const centerY = window.innerHeight / 2;
 
-    for (let i = 0; i < count; i++) {
-        setTimeout(() => {
-            const angle = Math.PI * i / (count / 2);
-            const x = size * (16 * Math.pow(Math.sin(angle), 3));
-            const y = -size * (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle));
-
-            let heart = document.createElement('span');
-            heart.textContent = '❤️';
-            heart.className = 'heart';
-            heart.style.position = 'absolute';
-            heart.style.left = `${centerX + x}px`;
-            heart.style.top = `${centerY + y}px`;
-            heart.style.opacity = '0';
-            heart.style.transition = 'opacity 0.3s ease-in';
-            heart.style.transform = `scale(${size / 30})`; // 🔥 Scaled properly
-
-            container.appendChild(heart);
-            console.log(`Added heart at ${heart.style.left}, ${heart.style.top}`);
-
+    function createHeartShape(centerX, delayMultiplier) {
+        for (let i = 0; i < count; i++) {
             setTimeout(() => {
-                heart.style.opacity = '1';
-            }, 30);
-        }, i * 20);
+                const angle = Math.PI * i / (count / 2);
+                const x = size * (16 * Math.pow(Math.sin(angle), 3));
+                const y = -size * (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle));
+
+                let heart = document.createElement('span');
+                heart.textContent = '❤️';
+                heart.className = 'heart';
+                heart.style.position = 'absolute';
+                heart.style.left = `${centerX + x}px`;
+                heart.style.top = `${centerY + y}px`;
+                heart.style.opacity = '0';
+                heart.style.transition = 'opacity 0.3s ease-in';
+                heart.style.transform = `scale(${size / 30})`; // 🔥 Scaled properly
+
+                container.appendChild(heart);
+                console.log(`Added heart at ${heart.style.left}, ${heart.style.top}`);
+
+                setTimeout(() => {
+                    heart.style.opacity = '1';
+                }, 30);
+            }, i * 20 * delayMultiplier); // Delays left and right separately
+        }
     }
+
+    createHeartShape(leftX, 1);  // Populate left side
+    createHeartShape(rightX, 1); // Populate right side
 }
 
 // Ensure function is globally accessible
